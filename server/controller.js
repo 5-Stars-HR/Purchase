@@ -1,5 +1,10 @@
 /* eslint-disable no-console */
-const { getProductData, getStoreData, postProductData } = require('./model.js');
+const { getProductData,
+  getStoreData,
+  postProductData,
+  putProductData,
+  deleteProductData,
+} = require('./model.js');
 
 const getProduct = (id, callback) => {
   getProductData(id, (err, results) => {
@@ -28,8 +33,23 @@ const postProduct = (q, callback) => {
   })
 }
 
+const putProduct = (q, id, callback) => {
+  putProduct(q, id, (err, results) => {
+    if (err) {
+      callback(err);
+    }
+    callback(null, results);
+  })
+}
+
+const deleteProduct = (id, callback) => {
+  console.log('delete')
+}
+
 module.exports = {
   getProduct,
   getStores,
   postProduct,
+  putProduct,
+  deleteProduct,
 };

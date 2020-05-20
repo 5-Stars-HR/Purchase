@@ -1,9 +1,14 @@
 /* eslint-disable no-console */
 const express = require('express');
-const { getProduct, getStores, postProduct } = require('./controller.js');
+const { getProduct,
+  getStores,
+  postProduct,
+  putProduct,
+  deleteProduct
+} = require('./controller.js');
 
 const app = express();
-const PORT = 3002;
+const PORT = 3003;
 
 app.use(express.static('public'));
 app.use(express.json());
@@ -28,7 +33,8 @@ app.get('/product/:id', (req, res) => {
   });
 });
 
-app.get('/product/:id/find-store', (req, res) => {
+//switched "find-store" and ":id" to conform to API bp
+app.get('/product/find-store/:id', (req, res) => {
   getStores(req.params.id, req.query.q, (err, results) => {
     if (err) {
       res.status(500).send(err);
@@ -41,29 +47,36 @@ app.get('/product/:id/find-store', (req, res) => {
 });
 
 app.post('/product', (req, res) => {
-  postProduct(req.query.q, (err, succ) => {
+  // console.log(req.query)
+  postProduct(req.query, (err, succ) => {
     if (err) {
-      res.status(422).send('could not post query')
+      res.status(400).send('could not post query')
     } else {
       res.status(201).end()
     }
   })
 });
 
-app.put('/product', (req, res) => {
-  putProduct(req.query.q, (err, succ) => {
+app.put('/product/:id', (req, res) => {
+  putProduct(req.query, req.params.id, (err, succ) => {
     if (err) {
-      res.status(422).send('could not update entry')
+      res.status(400).send('could not update entry')
     } else {
-      res.status(200).send(succ)
+      res.status(204).send(succ)
     }
   })
 });
 
-// app.delete();
+// app.delete('product/:id', (req, res) => {
+//   deleteProduct(req.params.id, (err, succ) => {
+//     if (err) {
+//       res.status(400).send('could not delete')
+//     } else {
+//       res.status(200).send(succ);
+//     }
+//   })
+// });
 
-if (process.env.NODE_ENV !== 'test') {
-  app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
-}
+app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
 module.exports = app;
