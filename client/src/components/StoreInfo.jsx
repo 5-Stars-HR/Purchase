@@ -6,6 +6,7 @@ const StoreInfo = ({ store }) => {
   const {
     storeName, storeAddress, productAvailability, id,
   } = store;
+  console.log(store);
 
   return (
     <Container>
