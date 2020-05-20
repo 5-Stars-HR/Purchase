@@ -32,7 +32,7 @@
 
 **Success Status Code:** `201`
 
-**Request Body**: Expects req.query with the following keys.
+**Request Body**: Expects req.query with the following keys  (include only keys to be updated)
 
 ```json
     {
@@ -86,7 +86,7 @@
 **Success Status Code:** `204`
 
 ### All API calls duplicated for "stores"
-  * POST `//products/find-stores/:id`
+  * POST `/products/find-stores/:id`
 
 **Path Parameters:**
 
@@ -94,7 +94,7 @@
 
 **Success Status Code:** `201`
 
-**Request Body**: Expects req.query with the following keys.
+**Request Body**: Expects req.query with the following keys (include only keys to be updated)
 
 ```json
     {
