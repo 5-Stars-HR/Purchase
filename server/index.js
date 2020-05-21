@@ -37,7 +37,7 @@ app.get('/product/:id', (req, res) => {
 
 //change :id to :loc - either a zip or city name
 //switched "find-store" and ":id" to conform to API bp
-app.get('/product/find-store/:id', (req, res) => {
+app.get('/LEGACY/product/:id/find-store/', (req, res) => {
   getStores(req.params.id, req.query.q, (err, results) => {
     if (err) {
       res.status(500).send(err);
@@ -47,6 +47,20 @@ app.get('/product/find-store/:id', (req, res) => {
       res.status(200).send(results);
     }
   });
+});
+
+app.get('/product/:id/store/:zip', (req, res) => {
+  console.log(req.params.id, req.params.zip)
+  res.end()
+  // getStores(req.params.zip, req.query.q, (err, results) => {
+  //   if (err) {
+  //     res.status(500).send(err);
+  //   } else if (!results.length) {
+  //     res.status(404).send('Store not found');
+  //   } else {
+  //     res.status(200).send(results);
+  //   }
+  // });
 });
 
 app.post('/product', (req, res) => {
