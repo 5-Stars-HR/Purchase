@@ -21,6 +21,8 @@ app.use((req, res, next) => {
   next();
 });
 
+
+
 app.get('/product/:id', (req, res) => {
   getProduct(req.params.id, (err, results) => {
     if (err) {
@@ -33,6 +35,7 @@ app.get('/product/:id', (req, res) => {
   });
 });
 
+//change :id to :loc - either a zip or city name
 //switched "find-store" and ":id" to conform to API bp
 app.get('/product/find-store/:id', (req, res) => {
   getStores(req.params.id, req.query.q, (err, results) => {

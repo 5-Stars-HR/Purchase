@@ -32,7 +32,7 @@
 
 **Success Status Code:** `201`
 
-**Request Body**: Expects req.query with the following keys  (include only keys to be updated)
+**Request Body**: Expects JSON with the following keys (include only keys to be updated)
 
 ```json
     {
@@ -59,7 +59,7 @@
 
 **Success Status Code:** `204`
 
-**Request Body**: Expects req.query with any of the following keys (include only keys to be updated)
+**Request Body**: Expects JSON with any of the following keys (include only keys to be updated)
 
 ```json
     {
@@ -94,7 +94,7 @@
 
 **Success Status Code:** `201`
 
-**Request Body**: Expects req.query with the following keys (include only keys to be updated)
+**Request Body**: Expects JSON with the following keys (include only keys to be updated)
 
 ```json
     {
