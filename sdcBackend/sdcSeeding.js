@@ -47,7 +47,7 @@ const product = (num) => {
     ratingIdx === ratings.length - 1 ? ratingIdx = 0 : ratingIdx += 1;
     featuredIdx === featuredLength - 1 ? featuredIdx = 0 : featuredIdx += 1;
 
-    if ((i + 1) % 50000 === 0) {
+    if ((i + 1) % 50000 === 0 || i === num - 1) {
       console.log(`${i + 1}`)
       const filePath = path.join(__dirname, `../seeder/productSeed${(i + 1) / 50000}.txt`)
       fs.writeFile(filePath, productSeed, (err) => {
@@ -84,5 +84,5 @@ const stores = (num) => {
   })
 };
 
-product(1000000);
+product(10000000);
 stores(10000);
