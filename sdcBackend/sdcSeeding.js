@@ -42,9 +42,9 @@ const product = (num) => {
 
     // reseting rolling indexes
     limit === 8 ? limit = 3 : limit += 1;
-    priceIdx === prices - 1 ? priceIdx = 0 : priceIdx += 1;
-    ratingIdx === ratings - 1 ? ratingIdx = 0 : ratingIdx += 1;
     themeIdx === themeLength - 1 ? themeIdx = 0 : themeIdx += 1;
+    priceIdx === prices.length - 1 ? priceIdx = 0 : priceIdx += 1;
+    ratingIdx === ratings.length - 1 ? ratingIdx = 0 : ratingIdx += 1;
     featuredIdx === featuredLength - 1 ? featuredIdx = 0 : featuredIdx += 1;
 
     if ((i + 1) % 50000 === 0) {
