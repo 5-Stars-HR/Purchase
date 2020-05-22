@@ -35,8 +35,18 @@ app.get('/product/:id', (req, res) => {
   });
 });
 
-//change :id to :loc - either a zip or city name
-//switched "find-store" and ":id" to conform to API bp
+app.get('/products/:id', (req, res) => {
+  getProduct(req.params.id, (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else if (!results.length) {
+      res.status(404).send('Oops! Product not found!');
+    } else {
+      res.status(200).send(results);
+    }
+  });
+});
+
 app.get('/LEGACY/product/:id/find-store/', (req, res) => {
   getStores(req.params.id, req.query.q, (err, results) => {
     if (err) {
@@ -49,8 +59,8 @@ app.get('/LEGACY/product/:id/find-store/', (req, res) => {
   });
 });
 
-app.get('/product/:id/store/:zip', (req, res) => {
-  console.log(req.params.id, req.params.zip)
+app.get('/products/:id/stores/:zip', (req, res) => {
+  console.log(req.params.id, req.params.zip) // <-  5, 23424
   res.end()
   // getStores(req.params.zip, req.query.q, (err, results) => {
   //   if (err) {
@@ -63,7 +73,7 @@ app.get('/product/:id/store/:zip', (req, res) => {
   // });
 });
 
-app.post('/product', (req, res) => {
+app.post('/products', (req, res) => {
   // console.log(req.query)
   postProduct(req.query, (err, succ) => {
     if (err) {
@@ -74,7 +84,7 @@ app.post('/product', (req, res) => {
   })
 });
 
-app.put('/product/:id', (req, res) => {
+app.put('/products/:id', (req, res) => {
   putProduct(req.query, req.params.id, (err, succ) => {
     if (err) {
       res.status(400).send('could not update entry')
@@ -84,7 +94,7 @@ app.put('/product/:id', (req, res) => {
   })
 });
 
-// app.delete('product/:id', (req, res) => {
+// app.delete('products/:id', (req, res) => {
 //   deleteProduct(req.params.id, (err, succ) => {
 //     if (err) {
 //       res.status(400).send('could not delete')

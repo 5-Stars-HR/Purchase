@@ -18,13 +18,12 @@ const productSchema = mongoose.Schema({
   productLimit: Number,
   productUrl: String,
   productAvailability: Boolean,
-  storeAvailability: Object // an object or array with all the storeIds that have this product
+
 });
 
 /*
 storeAvailabilty thoughts:
   - setup for the object might be {storeId: storeZip} in order to sort by distance in query and only return the 5 closest stores
-
   -  Fetch the Product document identified by this catalog number
   > product = db.products.findOne({catalog_number: 1234});
   // Fetch all the Parts that are linked to this Product
@@ -39,5 +38,8 @@ const storeSchema = mongoose.Schema({
   city: String,
   state: String,
   zip: String,
-  loc: Array //[x, y] coords
+  productAvailability: Object // an object or array with all the productIds that this store has in stock
 })
+
+//does Mongo have sets? -> if possible, move to a set with productIds: bool
+//above a couple hundred queries, things can get slow

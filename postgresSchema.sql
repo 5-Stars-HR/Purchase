@@ -11,14 +11,17 @@ CREATE TABLE products (
   reviewCount SMALLINT NOT NULL,
   rating NUMERIC (1, 2) NOT NULL,
   themeName VARCHAR(25),
-  themeUrl VARCHAR(100),
+  themeUrl VARCHAR(300),
   featured VARCHAR(25),
   chokingHazard BOOLEAN,
   productLimit TINYINT NOT NULL,
-  productUrl VARCHAR(100),
+  productUrl VARCHAR(300),
   onlineAvailability BOOLEAN,
   PRIMARY KEY(id)
 )
+
+-- rating is denormalized ^
+-- urls go up to ~288 (check)
 
 CREATE TABLE stores (
   storeId SERIAL PRIMARY KEY,
@@ -30,10 +33,12 @@ CREATE TABLE stores (
   PRIMARY KEY(id)
 )
 
+-- technically would want to be testing to make sure location is valid
+
 CREATE TABLE inventory (
   productId INT NOT NULL,
   storeId INT NOT NULL,
-  amount TINYINT NOT NULL,
+  -- amount TINYINT NOT NULL,
   FOREIGN KEY (productId) REFERENCES products(id),
   FOREIGN KEY (storeId) REFERENCES stores(id)
 )

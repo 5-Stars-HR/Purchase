@@ -1,10 +1,10 @@
 ## Server API
 
 ### Get product info
-  * GET `/product/:id`
+  * GET `/products/:id`
 
 **Path Parameters:**
-  * `id` restaurant id
+  * `id` products id
 
 **Success Status Code:** `200`
 
@@ -28,11 +28,11 @@
 ```
 
 ### Add product
-  * POST `/product`
+  * POST `/products`
 
 **Success Status Code:** `201`
 
-**Request Body**: Expects JSON with the following keys (include only keys to be updated)
+**Request Body**: Expects JSON with the following keys
 
 ```json
     {
@@ -52,7 +52,7 @@
 
 
 ### Update product info
-  * PUT `/product/:id`
+  * PATCH `/products/:id`
 
 **Path Parameters:**
   * `id` product id
@@ -78,7 +78,7 @@
 ```
 
 ### Delete product
-  * DELETE `/product/:id`
+  * DELETE `/products/:id`
 
 **Path Parameters:**
   * `id` product id
@@ -88,11 +88,11 @@
 
 
 ### API calls duplicated for "stores"
-  * GET `/product/:id/store/:zip`
+  * GET `/products/:id/stores/:zip`
 
 **Path Parameters:**
 
-  * `zip` store zipcode
+  * `zip` stores zipcode
 
 **Success Status Code:** `200`
 
@@ -102,6 +102,7 @@
     {
       "relatedStores": [
         {
+          "storeId": "Number",
           "storeName": "String",
           "storeSt": "String",
           "storeCity": "String",
@@ -109,6 +110,7 @@
           "storeZip": "Number"
         },
         {
+          "storeId": "Number",
           "storeName": "String",
           "storeSt": "String",
           "storeCity": "String",
@@ -121,7 +123,7 @@
 ```
 
 ### Add product
-  * POST `/addStore`
+  * POST `/stores`
 
 **Success Status Code:** `201`
 
@@ -129,6 +131,7 @@
 
 ```json
     {
+      "storeId": "Number",
       "storeName": "String",
       "storeSt": "String",
       "storeCity": "String",
@@ -138,7 +141,7 @@
 ```
 
 ### Update product info
-  * PUT `/store/:id`
+  * PATCH `/stores/:id`
 
 **Path Parameters:**
   * `id` product id
@@ -149,6 +152,7 @@
 
 ```json
     {
+      "storeId": "Number",
       "storeName": "String",
       "storeSt": "String",
       "storeCity": "String",
@@ -158,7 +162,7 @@
 ```
 
 ### Delete product
-  * DELETE `/store/:id`
+  * DELETE `/stores/:id`
 
 **Path Parameters:**
   * `id` store id
