@@ -29,7 +29,7 @@ const product = (num) => {
     let productName = `${faker.commerce.productAdjective()}${percentage > 60 ? ` ${theme.name}` : ``} LEGO ${faker.commerce.product()}`;
     let price = `$${prices[priceIdx]}`;
     let reviewCount = i % 79;
-    let rating = (percentage * 50) / 1000;
+    let rating = ratings[ratingIdx]
     let themeName = theme.name;
     let themeUrl = theme.themeURL;
     let featured = mockFeatured[featuredIdx];
