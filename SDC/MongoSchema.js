@@ -17,8 +17,7 @@ const productSchema = mongoose.Schema({
   chokingHazard: Boolean,
   productLimit: Number,
   productUrl: String,
-  productAvailability: Boolean,
-
+  onlineAvailability: Boolean,
 });
 
 /*

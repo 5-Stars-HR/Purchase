@@ -85,27 +85,103 @@ const stores = (num) => {
   });
 };
 
-const inventory = (productNum, storeNum, y) => {
-  let start = 1 + (y * 125);
-  let end = storeNum + (y * 125);
-  console.log(start, end)
-  for (let i = start; i <= end; i++) {
-    let modulo = Math.floor(Math.random() * 50)
-    for (let j = 1; j <= productNum; j++) {
-      if (j % module === 0) inventoryCsvSeed += `${j},${i}\n`;
+// const inventory = (productNum, storeNum, y) => {
+//   let start = 1 + (y * 125);
+//   let end = storeNum + (y * 125);
+//   console.log(start, end)
+
+//   for (let i = start; i <= end; i++) {
+//     let modulo = Math.floor(Math.random() * 100) + 4
+//     for (let j = 1; j <= productNum; j++) {
+//       if (j % modulo === 0) inventoryCsvSeed += `${j},${i}\n`;
+//     }
+//     if (i % 5 === 0) console.log(i);
+//   }
+//   const filePath = path.join(__dirname, `./csv/inventoryCsvSeed${y + 1}.csv`);
+//   fs.writeFile(filePath, inventoryCsvSeed, (err) => {
+//     if (err) {
+//       console.log(`inventory seed write fail`)
+//     } else {
+//       console.log(`${y + 1} - à votre santé`)
+//     }
+//   })
+//   inventoryCsvSeed = ``;
+// }
+
+let inventoryStream = ``;
+
+// const streamInventory = (productNum, storeNum) => {
+//   for (let i = 1; i <= storeNum; i++) {
+//     for (let j = 1; j <= productNum; j++) {
+//       if ((i + j) % 4 !== 0) continue;
+//       inventoryStream += `${j},${i}\n`;
+//     }
+//     if (i % 5 === 0) console.log(i);
+//     if (i % 250 === 0) {
+//       let filePath = path.join(__dirname, `./csv/inventory${i / 250}.csv`);
+//       let stream = fs.createWriteStream(filePath);
+//       stream.write(inventoryStream, (err) => {
+//         if (err) {
+//           console.log('stream write err', err)
+//         } else {
+//           console.log(`${i} - à votre santé`)
+//         }
+//       })
+//       inventoryStream = ``;
+//     }
+//   }
+// }
+
+const drainInventory = (productNum, storeNum) => {
+  const oneHundredBILLIONsnippets = () => {
+    let fileIdx = 1;
+    let filePath = path.join(__dirname, `./csv/inventory${fileIdx}.csv`);
+    let writer = fs.createWriteStream(filePath);
+
+    let i = 1;
+    let j = 1;
+
+    let drainer = () => {
+      let ok = true;
+      do {
+        let snippet = false;
+        if ((i + j) % 4 === 0) snippet = `${j},${i}\n`;
+        j++;
+        if (j > productNum) {
+          j = 1;
+          i++;
+        }
+        if (snippet) {
+          if (i === storeNum + 1) {
+            writer.write(snippet, (err) => {
+              if (err) {
+                console.log('final write stream error', err);
+              } else {
+                console.log(`${i - 1} - à votre santé`)
+              }
+            })
+          } else {
+            ok = writer.write(snippet);
+          }
+        }
+        if (j === 0 && i % 1 === 0) console.log(i)
+        if (j === 0 && i % 125 === 0) {
+          fileIdx++;
+          filePath = path.join(__dirname, `./csv/inventory${fileIdx}.csv`);
+          writer = fs.createWriteStream(filePath);
+          console.log(`${i} - à votre santé`);
+        }
+      } while (j <= productNum && i <= storeNum && ok);
+
+      if (i <= storeNum) {
+        writer.once('drain', drainer);
+      }
     }
-    if (i % 5 === 0) console.log(i);
+    drainer();
   }
-  const filePath = path.join(__dirname, `./csv/inventoryCsvSeed${y + 1}.csv`);
-  fs.writeFile(filePath, inventoryCsvSeed, (err) => {
-    if (err) {
-      console.log(`inventory seed write fail`)
-    } else {
-      console.log(`${y + 1} - à votre santé`)
-    }
-  })
-  inventoryCsvSeed = ``;
-}
+  oneHundredBILLIONsnippets();
+};
+
 
 let storeCount = 10000;
 let productCount = 1000 * storeCount;
@@ -115,7 +191,42 @@ let productCount = 1000 * storeCount;
 // }
 // stores(storeCount);
 
+drainInventory(productCount, storeCount);
 
-for (let y = 0; y < 1; y++) { // need to run this 5 times
-  inventory(productCount, storeCount / 80, y);
-}
+// for (let y = 0; y < 1; y++) { // need to run this 5 times
+//   inventory(productCount, storeCount / 80, y);
+// }
+
+
+//drain the memory
+
+
+
+
+
+// if ((j + i) % 4 !== 0) {
+//   j += 1;
+//   if (j > productNum) {
+//     j = 0;
+//     i += 1;
+//   }
+//   continue;
+// }
+// if (i >= storeNum) {
+//   writer.write(snippet, (err) => {
+//     if (err) {
+//       console.log(`stream write fail`, err)
+//     } else {
+//       console.log(`à votre santé`)
+//     }
+//   });
+// } else if (i ) {
+//   // console.log('else', i, ' ', j);
+//   console.log(writer.write(snippet))
+//   j += 1;
+//   if (j > productNum) {
+//     j = 0;
+//     i += 1;
+//   }
+//   // console.log("skipped writer.write")
+// }

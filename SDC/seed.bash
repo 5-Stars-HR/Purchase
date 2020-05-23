@@ -49,128 +49,128 @@ psql -d checkout --user=postgres -c "COPY products(product_name, price, review_c
 psql -d checkout --user=postgres -c "COPY stores(store_name, street, city, state, zip) FROM '/Users/brian/src/5-Star/Product/SDC/csv/storeCsvSeed.csv' DELIMITER ',' CSV HEADER;"
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed1.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed2.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed3.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed4.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed5.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory1.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory2.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory3.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory4.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory5.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed6.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed7.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed8.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed9.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed10.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory6.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory7.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory8.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory9.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory10.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed11.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed12.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed13.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed14.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed15.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory11.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory12.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory13.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory14.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory15.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed16.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed17.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed18.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed19.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed20.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory16.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory17.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory18.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory19.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory20.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed21.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed22.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed23.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed24.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed25.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory21.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory22.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory23.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory24.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory25.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed26.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed27.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed28.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed29.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed30.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory26.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory27.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory28.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory29.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory30.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed31.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed32.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed33.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed34.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed35.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory31.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory32.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory33.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory34.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory35.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed36.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed37.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed38.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed39.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed40.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory36.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory37.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory38.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory39.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory40.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed41.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed42.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed43.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed44.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed45.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory41.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory42.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory43.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory44.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory45.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed46.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed47.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed48.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed49.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed50.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory46.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory47.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory48.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory49.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory50.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed51.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed52.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed53.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed54.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed55.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory51.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory52.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory53.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory54.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory55.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed56.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed57.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed58.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed59.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed60.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory56.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory57.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory58.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory59.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory60.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed61.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed62.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed63.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed64.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed65.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory61.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory62.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory63.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory64.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory65.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed66.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed67.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed68.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed69.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed70.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory66.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory67.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory68.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory69.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory70.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed71.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed72.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed73.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed74.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed75.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory71.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory72.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory73.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory74.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory75.csv' DELIMITER ',' CSV HEADER;"
 
 
 
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed76.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed77.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed78.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed79.csv' DELIMITER ',' CSV HEADER;"
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventoryCsvSeed80.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory76.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory77.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory78.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory79.csv' DELIMITER ',' CSV HEADER;"
+psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory80.csv' DELIMITER ',' CSV HEADER;"
