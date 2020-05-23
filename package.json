@@ -15,7 +15,11 @@
     "test": "NODE_ENV=test jest --watchAll",
     "ci-test": "jest ./__tests__ --testPathIgnorePatterns ./server --ci -i --detectOpenHandles --forceExit",
     "start": "webpack --config webpack.prod.js && node ./server/index.js",
-    "dev": "concurrently -k \"npm run start-server\" \"npx webpack -w --config webpack.dev.js\""
+    "dev": "concurrently -k \"npm run start-server\" \"npx webpack -w --config webpack.dev.js\"",
+    "db:init": "psql -U postgres < SDC/postgresSchema.sql",
+    "db:createSeed": "node --max-old-space-size=14000 SDC/seed.js",
+    "db:insertSeed": "bash ./SDC/seed.bash",
+    "db:fullSeed": "npm run db:init && npm run db:createSeed && npm run db:insertSeed"
   },
   "dependencies": {
     "axios": "^0.19.2",
