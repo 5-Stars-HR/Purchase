@@ -17,7 +17,7 @@
     "start": "webpack --config webpack.prod.js && node ./server/index.js",
     "dev": "concurrently -k \"npm run start-server\" \"npx webpack -w --config webpack.dev.js\"",
     "db:init": "psql -U postgres < SDC/postgresSchema.sql",
-    "db:createSeed": "node --max-old-space-size=14000 SDC/psqlSeed.js",
+    "db:createSeed": "node --max-old-space-size=12288 SDC/psqlSeed.js",
     "db:insertSeed": "bash ./SDC/seed.bash",
     "db:fullSeed": "npm run db:init && npm run db:createSeed && npm run db:insertSeed"
   },
@@ -27,6 +27,8 @@
     "express": "^4.17.1",
     "faker": "^4.1.0",
     "fs": "0.0.1-security",
+    "mongodb": "^3.5.7",
+    "mongoose": "^5.9.16",
     "mysql": "^2.18.1",
     "nodemon": "^2.0.4",
     "path": "^0.12.7",

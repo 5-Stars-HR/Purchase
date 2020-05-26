@@ -36,7 +36,7 @@ const storeSchema = mongoose.Schema({
   street: String,
   city: String,
   state: String,
-  zip: String,
+  zip: Number,
   productAvailability: Object // an object or array with all the productIds that this store has in stock
 })
 
