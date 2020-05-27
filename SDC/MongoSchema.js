@@ -1,14 +1,7 @@
 const mongoose = require('mongoose');
 const mongoURI = 'mongodb://localhost:27017/checkout';
 
-mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
 
-const db = mongoose.connection;
-
-db.on('error', console.error.bind(console, 'connection error:'));
-db.once('open', function() {
-  console.log("we’re connected!")
-});
 
 //productId should be auto incrementing
 const productSchema = mongoose.Schema({

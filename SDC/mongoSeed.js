@@ -2,10 +2,12 @@ const fs = require('fs');
 const path = require('path');
 const faker = require('faker');
 const { Products, Stores, Inventory } = require('./MongoSchema.js');
-// const {  } = require('./MongoSchema.js');
+const randStores = require('./randStores.js');
 const {
   mockStores, mockThemes, mockFeatured, mockNames,
 } = require('../seeder/exampleData.js');
+const mongoose = require('mongoose');
+const mongoURI = 'mongodb://localhost:27017/checkout';
 
 console.log(new Date())
 
@@ -13,7 +15,17 @@ const prices = [249.99, 169.99, 204.99, 34.99, 219.99, 309.99, 409.99, 39.99, 29
 
 const ratings = [3.4, 3.5, 4.3, 0.2, 4.2, 2.3, 1.3, 4, 4.9, 2.5, 0.9, 2.5, 3.1, 4, 1.2, 3.1, 2.3, 2, 3.2, 4.4, 1.1, 3.8, 3.9, 0.4, 4.9, 3.9, 1.8, 4.1, 1, 0.9, 1.9, 1.2, 1.7, 0.5, 0.6, 0.9, 2.9, 1, 2.5, 2.4, 1.8, 0.8, 0.9, 0, 2.9, 3.1, 0.2, 3.1, 3.3, 2.5, 1, 0.7, 1, 3.5, 1.9, 4.7, 4.4, 3.4, 0.8, 2.2, 3.8, 0, 0, 2.1, 1.8, 0.2, 1.1, 3.3, 2.9, 2.4, 2.5, 1.6, 0.8, 2.2, 4.9, 3.8, 0.6, 1, 0.4, 0.9, 0.2, 1.8, 0, 3.5, 4.3, 2.2, 1.6];
 
-const drainProduct = (productCount) => {
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+
+db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we’re connected!")
+  product(100000);
+});
+
+const product = (productCount) => {
   const tenMILLIONproducts = () => {
     let fileIdx = 1;
     let filePath = path.join(__dirname, `./csv/products${fileIdx}.csv`);
@@ -24,7 +36,7 @@ const drainProduct = (productCount) => {
     let bulkProductHolder = [];
     let bulkInventoryHolder = [];
 
-    let drainer = () => {
+    let looper = () => {
       let themeIdx = 0;
       let themeLength = mockThemes.length;
       let theme = mockThemes[themeIdx];
@@ -64,6 +76,11 @@ const drainProduct = (productCount) => {
           onlineAvailability: onlineAvailability
         };
 
+        let inventory = {
+          productId: i,
+          stores: randStores[percentage - 1]
+        }
+
         // reseting rolling indexes
         limit === 8 ? limit = 3 : limit += 1;
         themeIdx === themeLength - 1 ? themeIdx = 0 : themeIdx += 1;
@@ -74,20 +91,51 @@ const drainProduct = (productCount) => {
 
         i++;
 
-        bulkProductHolder.push({insertOne: {document: product}});
-        // console.log(product)
-        if (i === productCount + 1) {
-          console.log(`${i - 1} - done`);
-          Products.bulkWrite(bulkProductHolder, {ordered: false})
-          bulkProductHolder = [];
-        } else if (i % 25000 === 0) {
+        bulkProductHolder.push({insertOne: product});
+        // bulkInventoryHolder.push({insertOne: {document: inventory}});
+
+        if (i % 25000 === 0 || i === productCount + 1) {
           console.log(i);
-          Products.bulkWrite(bulkProductHolder, {ordered: false});
-          bulkProductHolder = [];
+          Products.bulkWrite(bulkProductHolder)
+          .then((res) => {
+            console.log(i);
+            bulkProductHolder = [];
+          })
+          .catch((err) => console.log(err));
+          // Inventory.bulkWrite(bulkInventoryHolder, {ordered: false})
+          // .then((res) => {
+          //   console.log(i);
+          //   bulkInventoryHolder = [];
+          // })
+          // .catch((err) => console.log(err));
+
+        }
+
+        if (i === productCount + 1) {
+          writer.write(product, (err) => {
+            if (err) {
+              console.log('final write error', err);
+            } else {
+              console.log(`${i - 1} - prost`)
+              console.log(new Date());
+            }
+          });
+        } else {
+          ok = writer.write(product);
+        }
+        if (i % 50000 === 0) console.log(i);
+        if (i % 1000000 === 0) {
+          fileIdx++;
+          filePath = path.join(__dirname, `./csv/products${fileIdx}.csv`);
+          writer = fs.createWriteStream(filePath);
+          console.log(`${i} - prost`);
         }
       } while (i <= productCount && ok);
+
     }
-    drainer();
+    looper();
+    // console.log(bulkProductHolder[0]);
+    // console.log(bulkInventoryHolder[0]);
   }
   tenMILLIONproducts();
 };
@@ -108,29 +156,20 @@ const stores = (productNum, storeNum) => {
       street: street,
       city: city,
       state: state,
-      zip: zip,
-      productAvailability: {}
+      zip: zip
     };
-
-    for (let j = 1 + (i % 1000); j <= productNum; j += 1000) {
-      store.productAvailability[j] = true;
-    }
 
     bulkHolder.push({insertOne: {document: store}});
 
-    // console.log(store);
-    if (i % 450 === 0) {
+    if (i % 500 === 0 || i === storeNum ) {
       Stores.bulkWrite(bulkHolder, {ordered: false});
       bulkHolder = [];
       console.log(i);
     }
   };
-  Stores.bulkWrite(bulkHolder, {ordered: false});
+  // Stores.bulkWrite(bulkHolder, {ordered: false});
 };
 
-let storeCount = 0;
-let productCount = 0 * storeCount;
-
-// stores(10000000, 900);
-drainProduct(100);
+// stores(10000000, 1000);
+// module.exports.product = product;
 // drainInventory(productCount, storeCount);
