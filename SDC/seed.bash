@@ -33,7 +33,7 @@ echo PRODUCTS 10
 psql -d checkout --user=postgres -c "COPY products(product_name, price, review_count, rating, theme_name, theme_url, featured, choking_hazard, product_limit, product_url, online_availability) FROM '/Users/brian/src/5-Star/Product/SDC/csv/products10.csv' DELIMITER ',';"
 
 echo PRODUCTS 11
-# psql -d checkout --user=postgres -c "COPY products(product_name, price, review_count, rating, theme_name, theme_url, featured, choking_hazard, product_limit, product_url, online_availability) FROM '/Users/brian/src/5-Star/Product/SDC/csv/products11.csv' DELIMITER ',';"
+psql -d checkout --user=postgres -c "COPY products(product_name, price, review_count, rating, theme_name, theme_url, featured, choking_hazard, product_limit, product_url, online_availability) FROM '/Users/brian/src/5-Star/Product/SDC/csv/products11.csv' DELIMITER ',';"
 
 # echo PRODUCTS 12
 # psql -d checkout --user=postgres -c "COPY products(product_name, price, review_count, rating, theme_name, theme_url, featured, choking_hazard, product_limit, product_url, online_availability) FROM '/Users/brian/src/5-Star/Product/SDC/csv/products12.csv' DELIMITER ',';"
@@ -99,8 +99,8 @@ psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '
 echo INVENTORY 10
 psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory10.csv' DELIMITER ',';"
 
-echo INVENTORY 11
-psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory11.csv' DELIMITER ',';"
+# echo INVENTORY 11
+# psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory11.csv' DELIMITER ',';"
 
 # echo INVENTORY 12
 # psql -d checkout --user=postgres -c "COPY inventory(product_id, store_id) FROM '/Users/brian/src/5-Star/Product/SDC/csv/inventory12.csv' DELIMITER ',';"

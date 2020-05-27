@@ -1,8 +1,14 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb://localhost/fetcher');
+const mongoURI = 'mongodb://localhost:27017/checkout';
 
-let db = mongoose.connection;
+mongoose.connect(mongoURI, { useNewUrlParser: true, useUnifiedTopology: true });
+
+const db = mongoose.connection;
+
 db.on('error', console.error.bind(console, 'connection error:'));
+db.once('open', function() {
+  console.log("we’re connected!")
+});
 
 //productId should be auto incrementing
 const productSchema = mongoose.Schema({
@@ -18,6 +24,11 @@ const productSchema = mongoose.Schema({
   productLimit: Number,
   productUrl: String,
   onlineAvailability: Boolean,
+});
+
+const inventorySchema = mongoose.Schema({
+  productId: Number,
+  stores: Object,
 });
 
 /*
@@ -37,8 +48,11 @@ const storeSchema = mongoose.Schema({
   city: String,
   state: String,
   zip: Number,
-  productAvailability: Object // an object or array with all the productIds that this store has in stock
-})
+  // productAvailability: Object // an object or array with all the productIds that this store has in stock
+});
 
-//does Mongo have sets? -> if possible, move to a set with productIds: bool
-//above a couple hundred queries, things can get slow
+const Products = mongoose.model('Products', productSchema);
+const Inventory = mongoose.model('Inventory', inventorySchema);
+const Stores = mongoose.model('Stores', storeSchema);
+
+module.exports = { Products, Stores, Inventory };

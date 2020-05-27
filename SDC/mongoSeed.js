@@ -1,6 +1,8 @@
 const fs = require('fs');
 const path = require('path');
 const faker = require('faker');
+const { Products, Stores, Inventory } = require('./MongoSchema.js');
+// const {  } = require('./MongoSchema.js');
 const {
   mockStores, mockThemes, mockFeatured, mockNames,
 } = require('../seeder/exampleData.js');
@@ -11,28 +13,27 @@ const prices = [249.99, 169.99, 204.99, 34.99, 219.99, 309.99, 409.99, 39.99, 29
 
 const ratings = [3.4, 3.5, 4.3, 0.2, 4.2, 2.3, 1.3, 4, 4.9, 2.5, 0.9, 2.5, 3.1, 4, 1.2, 3.1, 2.3, 2, 3.2, 4.4, 1.1, 3.8, 3.9, 0.4, 4.9, 3.9, 1.8, 4.1, 1, 0.9, 1.9, 1.2, 1.7, 0.5, 0.6, 0.9, 2.9, 1, 2.5, 2.4, 1.8, 0.8, 0.9, 0, 2.9, 3.1, 0.2, 3.1, 3.3, 2.5, 1, 0.7, 1, 3.5, 1.9, 4.7, 4.4, 3.4, 0.8, 2.2, 3.8, 0, 0, 2.1, 1.8, 0.2, 1.1, 3.3, 2.9, 2.4, 2.5, 1.6, 0.8, 2.2, 4.9, 3.8, 0.6, 1, 0.4, 0.9, 0.2, 1.8, 0, 3.5, 4.3, 2.2, 1.6];
 
-let productCsvSeed = ``;
-let storeCsvSeed = ``;
-let inventoryCsvSeed = ``;
-
-const drainProduct = (limit) => {
+const drainProduct = (productCount) => {
   const tenMILLIONproducts = () => {
     let fileIdx = 1;
     let filePath = path.join(__dirname, `./csv/products${fileIdx}.csv`);
     let writer = fs.createWriteStream(filePath);
 
-    let themeIdx = 0;
-    let themeLength = mockThemes.length;
-    let theme = mockThemes[themeIdx];
-    let featuredIdx = 0;
-    let featuredLength = mockFeatured.length;
-    let limit = 3;
-    let priceIdx = 0;
-    let ratingIdx = 0;
+    let i = 1;
 
-    let i = 0;
+    let bulkProductHolder = [];
+    let bulkInventoryHolder = [];
 
     let drainer = () => {
+      let themeIdx = 0;
+      let themeLength = mockThemes.length;
+      let theme = mockThemes[themeIdx];
+      let featuredIdx = 0;
+      let featuredLength = mockFeatured.length;
+      let limit = 3;
+      let priceIdx = 0;
+      let ratingIdx = 0;
+
       let ok = true;
       do {
         let percentage = i % 100;
@@ -49,7 +50,7 @@ const drainProduct = (limit) => {
         let onlineAvailability = percentage % 3 === 0;
 
         let product = {
-          productId: i + 1,
+          productId: i,
           productName: productName,
           price: price,
           reviewCount: reviewCount,
@@ -61,47 +62,45 @@ const drainProduct = (limit) => {
           productLimit: productLimit,
           productUrl: productUrl,
           onlineAvailability: onlineAvailability
-        }
+        };
+
+        // reseting rolling indexes
+        limit === 8 ? limit = 3 : limit += 1;
+        themeIdx === themeLength - 1 ? themeIdx = 0 : themeIdx += 1;
+        theme = mockThemes[themeIdx];
+        priceIdx === prices.length - 1 ? priceIdx = 0 : priceIdx += 1;
+        ratingIdx === ratings.length - 1 ? ratingIdx = 0 : ratingIdx += 1;
+        featuredIdx === featuredLength - 1 ? featuredIdx = 0 : featuredIdx += 1;
 
         i++;
 
-      //   if (i === limit + 1) {
-      //     writer.write(product, (err) => {
-      //       if (err) {
-      //         console.log('final write error', err);
-      //       } else {
-      //         console.log(`${i - 1} - prost`)
-      //       }
-      //     })
-      //   } else {
-      //     ok = writer.write(product);
-      //   }
-      //   if (i % 500 === 0) console.log(i);
-      //   if (i % 1000 === 0) {
-      //     fileIdx++;
-      //     filePath = path.join(__dirname, `./csv/products${fileIdx}.csv`);
-      //     writer = fs.createWriteStream(filePath);
-      //     console.log(`${i} - prost`);
-      //   }
-      // } while (i <= limit && ok);
-
-      // if (i <= limit) {
-      //   writer.once('drain', drainer);
-      // }
+        bulkProductHolder.push({insertOne: {document: product}});
+        // console.log(product)
+        if (i === productCount + 1) {
+          console.log(`${i - 1} - done`);
+          Products.bulkWrite(bulkProductHolder, {ordered: false})
+          bulkProductHolder = [];
+        } else if (i % 25000 === 0) {
+          console.log(i);
+          Products.bulkWrite(bulkProductHolder, {ordered: false});
+          bulkProductHolder = [];
+        }
+      } while (i <= productCount && ok);
     }
     drainer();
   }
   tenMILLIONproducts();
 };
 
-const stores = (num) => {
-  for (let i = 0; i <= num; i++) {
+const stores = (productNum, storeNum) => {
+  let bulkHolder = [];
+  for (let i = 1; i <= storeNum; i++) {
     let fakerCity = faker.address.city()
     let storeName = `LEGO STORE ${fakerCity} ${faker.address.streetSuffix()}`;
     let street = `${faker.address.streetAddress()} ${faker.address.streetName()}`
     let city = fakerCity;
     let state = faker.address.stateAbbr();
-    let zip = Math.floor(Math.random() * 10000);
+    let zip = Math.floor(Math.random() * 100000);
 
     let store = {
       storeId: i,
@@ -111,77 +110,27 @@ const stores = (num) => {
       state: state,
       zip: zip,
       productAvailability: {}
-    }
+    };
 
-    for (let j = 0; j < num * 1000; j++) {
-      if ((j + 1) % 4 !== 0) continue;
+    for (let j = 1 + (i % 1000); j <= productNum; j += 1000) {
       store.productAvailability[j] = true;
     }
-  };
 
-  // const filePath = path.join(__dirname, `./csv/storeCsvSeed.csv`)
-  // fs.writeFile(filePath, storeCsvSeed, (err) => {
-  //   if (err) {
-  //     console.log(`store seed write fail`);
-  //   } else {
-  //     console.log(`${num} - cheers`);
-  //   }
-  // });
+    bulkHolder.push({insertOne: {document: store}});
+
+    // console.log(store);
+    if (i % 450 === 0) {
+      Stores.bulkWrite(bulkHolder, {ordered: false});
+      bulkHolder = [];
+      console.log(i);
+    }
+  };
+  Stores.bulkWrite(bulkHolder, {ordered: false});
 };
 
-// const drainInventory = (productNum, storeNum) => {
-//   const oneHundredBILLIONsnippets = () => {
-//     let fileIdx = 1;
-//     let filePath = path.join(__dirname, `./csv/inventory${fileIdx}.csv`);
-//     let writer = fs.createWriteStream(filePath);
+let storeCount = 0;
+let productCount = 0 * storeCount;
 
-//     let i = 1;
-//     let j = 1;
-
-//     let drainer = () => {
-//       let ok = true;
-//       do {
-//         let snippet = false;
-//         if ((i + j) % 4 === 0) snippet = `${j},${i}\n`;
-//         j++;
-//         if (j > productNum) {
-//           j = 1;
-//           i++;
-//         }
-//         if (snippet) {
-//           if (i === storeNum + 1) {
-//             writer.write(snippet, (err) => {
-//               if (err) {
-//                 console.log('final write stream error', err);
-//               } else {
-//                 console.log(`${i - 1} - à votre santé`)
-//               }
-//             })
-//           } else {
-//             ok = writer.write(snippet);
-//           }
-//         }
-//         if (j === 1 && i % 2 === 0) console.log(i)
-//         if (j === 1 && i % 125 === 0) {
-//           fileIdx++;
-//           filePath = path.join(__dirname, `./csv/inventory${fileIdx}.csv`);
-//           writer = fs.createWriteStream(filePath);
-//           console.log(`${i} - à votre santé`);
-//         }
-//       } while (j <= productNum && i <= storeNum && ok);
-
-//       if (i <= storeNum) {
-//         writer.once('drain', drainer);
-//       }
-//     }
-//     drainer();
-//   }
-//   oneHundredBILLIONsnippets();
-// };
-
-
-let storeCount = 10000;
-let productCount = 1000 * storeCount;
-
-// drainProduct(productCount);
-drainInventory(productCount, storeCount);
+// stores(10000000, 900);
+drainProduct(100);
+// drainInventory(productCount, storeCount);

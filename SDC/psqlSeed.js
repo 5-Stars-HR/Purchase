@@ -11,10 +11,6 @@ const prices = [249.99, 169.99, 204.99, 34.99, 219.99, 309.99, 409.99, 39.99, 29
 
 const ratings = [3.4, 3.5, 4.3, 0.2, 4.2, 2.3, 1.3, 4, 4.9, 2.5, 0.9, 2.5, 3.1, 4, 1.2, 3.1, 2.3, 2, 3.2, 4.4, 1.1, 3.8, 3.9, 0.4, 4.9, 3.9, 1.8, 4.1, 1, 0.9, 1.9, 1.2, 1.7, 0.5, 0.6, 0.9, 2.9, 1, 2.5, 2.4, 1.8, 0.8, 0.9, 0, 2.9, 3.1, 0.2, 3.1, 3.3, 2.5, 1, 0.7, 1, 3.5, 1.9, 4.7, 4.4, 3.4, 0.8, 2.2, 3.8, 0, 0, 2.1, 1.8, 0.2, 1.1, 3.3, 2.9, 2.4, 2.5, 1.6, 0.8, 2.2, 4.9, 3.8, 0.6, 1, 0.4, 0.9, 0.2, 1.8, 0, 3.5, 4.3, 2.2, 1.6];
 
-let productCsvSeed = ``;
-let storeCsvSeed = ``;
-let inventoryCsvSeed = ``;
-
 const drainProduct = (productCount) => {
   const tenMILLIONproducts = () => {
     let fileIdx = 1;
@@ -128,11 +124,11 @@ const drainInventory = (productNum, storeNum) => {
 
       do {
         let snippet = `${j + jIdx},${i}\n`;
-        j += 4;
-        if (j > productNum) {
+        j += 12;
+        if ((j + jIdx) > productNum) {
           j = 1;
           i++;
-          jIdx < 3 ? jIdx++ : jIdx = 0;
+          jIdx < 11 ? jIdx++ : jIdx = 0;
         }
         if (i === storeNum + 1) {
           writer.write(snippet, (err) => {
@@ -164,10 +160,6 @@ const drainInventory = (productNum, storeNum) => {
   tenBILLIONsnippets();
 };
 
-
-let storeCount = 1000;
-let productCount = 10000 * storeCount;
-
-drainProduct(10000000);
-stores(1000);
-// drainInventory(10000000, 1000);
+// drainProduct(10000000);
+// stores(900);
+drainInventory(10000000, 900);
