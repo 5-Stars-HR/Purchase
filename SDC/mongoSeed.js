@@ -111,25 +111,25 @@ const product = (productCount) => {
 
         }
 
-        if (i === productCount + 1) {
-          writer.write(product, (err) => {
-            if (err) {
-              console.log('final write error', err);
-            } else {
-              console.log(`${i - 1} - prost`)
-              console.log(new Date());
-            }
-          });
-        } else {
-          ok = writer.write(product);
-        }
-        if (i % 50000 === 0) console.log(i);
-        if (i % 1000000 === 0) {
-          fileIdx++;
-          filePath = path.join(__dirname, `./csv/products${fileIdx}.csv`);
-          writer = fs.createWriteStream(filePath);
-          console.log(`${i} - prost`);
-        }
+        // if (i === productCount + 1) {
+        //   writer.write(product, (err) => {
+        //     if (err) {
+        //       console.log('final write error', err);
+        //     } else {
+        //       console.log(`${i - 1} - prost`)
+        //       console.log(new Date());
+        //     }
+        //   });
+        // } else {
+        //   ok = writer.write(product);
+        // }
+        // if (i % 50000 === 0) console.log(i);
+        // if (i % 1000000 === 0) {
+        //   fileIdx++;
+        //   filePath = path.join(__dirname, `./csv/products${fileIdx}.csv`);
+        //   writer = fs.createWriteStream(filePath);
+        //   console.log(`${i} - prost`);
+        // }
       } while (i <= productCount && ok);
 
     }
