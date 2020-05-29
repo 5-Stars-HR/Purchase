@@ -4,7 +4,7 @@ const mongoURI = 'mongodb://localhost:27017/checkout';
 
 
 //productId should be auto incrementing
-const productSchema = mongoose.Schema({
+const productSchema = new mongoose.Schema({
   productId: Number,
   productName: String,
   price: Number,
@@ -19,7 +19,7 @@ const productSchema = mongoose.Schema({
   onlineAvailability: Boolean,
 });
 
-const inventorySchema = mongoose.Schema({
+const inventorySchema = new mongoose.Schema({
   productId: Number,
   stores: Object,
 });
@@ -34,7 +34,7 @@ storeAvailabilty thoughts:
  */
 
 //storeId should be auto incrementing
-const storeSchema = mongoose.Schema({
+const storeSchema = new mongoose.Schema({
   storeId: Number,
   storeName: String,
   street: String,
@@ -44,8 +44,17 @@ const storeSchema = mongoose.Schema({
   // productAvailability: Object // an object or array with all the productIds that this store has in stock
 });
 
-const Products = mongoose.model('Products', productSchema);
-const Inventory = mongoose.model('Inventory', inventorySchema);
-const Stores = mongoose.model('Stores', storeSchema);
+const Products = mongoose.model('Products', productSchema, 'products');
+const Inventory = mongoose.model('Inventory', inventorySchema, 'inventory');
+const Stores = mongoose.model('Stores', storeSchema, 'stores');
 
 module.exports = { Products, Stores, Inventory };
+
+
+// select * from inventory where product_id = 9888999 AND store_id = 1 AND store_id = 124 AND store_id = 244 AND store_id = 712 AND store_id = 453 AND store_id = 677;
+
+// select * from inventory where product_id = 10000000 AND store_id = 712;
+
+// select * from inventory where product_id = 9888999 AND store_id = 1 OR product_id = 9888999 AND store_id = 124 OR product_id = 9888999 AND store_id = 244 OR product_id = 9888999 AND store_id = 874 OR product_id = 9888999 AND store_id = 453 OR product_id = 9888999 AND store_id = 677;
+
+// INSERT INTO inventory (store_id, product_id) VALUES (874, 9888999);

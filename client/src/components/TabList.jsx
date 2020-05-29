@@ -35,7 +35,8 @@ const TabList = (props) => {
 
   const getStores = async (id, searchQuery) => {
     try {
-      return await axios.get(`/LEGACY/product/${id}/find-store?q=${searchQuery}`);
+      return await axios.get(`/products/${id}/stores/${searchQuery}`);
+      // return await axios.get(`/LEGACY/product/${id}/find-store?q=${searchQuery}`);
     } catch (error) {
       throw new Error(error);
     }

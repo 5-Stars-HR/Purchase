@@ -15,8 +15,8 @@ const getProduct = (id, callback) => {
   });
 };
 
-const getStores = (id, searchQuery, callback) => {
-  getStoreData(id, searchQuery, (err, results) => {
+const getStores = (id, zip, callback) => {
+  getStoreData(id, zip, (err, results) => {
     if (err) {
       callback(err);
     }

@@ -21,8 +21,6 @@ app.use((req, res, next) => {
   next();
 });
 
-
-
 app.get('/product/:id', (req, res) => {
   getProduct(req.params.id, (err, results) => {
     if (err) {
@@ -35,20 +33,10 @@ app.get('/product/:id', (req, res) => {
   });
 });
 
-app.get('/products/:id', (req, res) => {
-  getProduct(req.params.id, (err, results) => {
-    if (err) {
-      res.status(500).send(err);
-    } else if (!results.length) {
-      res.status(404).send('Oops! Product not found!');
-    } else {
-      res.status(200).send(results);
-    }
-  });
-});
-
-app.get('/LEGACY/product/:id/find-store/', (req, res) => {
-  getStores(req.params.id, req.query.q, (err, results) => {
+app.get('/products/:id/stores/:zip', (req, res) => {
+  // console.log(req.params.id, req.params.zip) // <-  5, 23424
+  // res.end()
+  getStores(req.params.id, req.params.zip , (err, results) => {
     if (err) {
       res.status(500).send(err);
     } else if (!results.length) {
@@ -57,20 +45,6 @@ app.get('/LEGACY/product/:id/find-store/', (req, res) => {
       res.status(200).send(results);
     }
   });
-});
-
-app.get('/products/:id/stores/:zip', (req, res) => {
-  console.log(req.params.id, req.params.zip) // <-  5, 23424
-  res.end()
-  // getStores(req.params.zip, req.query.q, (err, results) => {
-  //   if (err) {
-  //     res.status(500).send(err);
-  //   } else if (!results.length) {
-  //     res.status(404).send('Store not found');
-  //   } else {
-  //     res.status(200).send(results);
-  //   }
-  // });
 });
 
 app.post('/products', (req, res) => {
@@ -103,6 +77,18 @@ app.put('/products/:id', (req, res) => {
 //     }
 //   })
 // });
+
+app.get('/LEGACY/product/:id/find-store/', (req, res) => {
+  getLEGACYStores(req.params.id, req.query.q, (err, results) => {
+    if (err) {
+      res.status(500).send(err);
+    } else if (!results.length) {
+      res.status(404).send('Store not found');
+    } else {
+      res.status(200).send(results);
+    }
+  });
+});
 
 app.listen(PORT, () => console.log(`Listening on port ${PORT}`));
 
