@@ -1,3 +1,5 @@
+const newrelic = require('newrelic');
+
 /* eslint-disable no-console */
 const express = require('express');
 const { getProduct,
@@ -8,25 +10,29 @@ const { getProduct,
 } = require('./controller.js');
 
 const app = express();
-const PORT = 3003;
+const PORT = 8673;
 
 app.use(express.static('public'));
 app.use(express.json());
-app.use((req, res, next) => {
-  res.header('Access-Control-Allow-Origin', '*');
-  next();
-});
-app.use((req, res, next) => {
-  console.log(`Incoming ${req.method} request to ${req.path}`);
-  next();
-});
+// app.use((req, res, next) => {
+//   res.header('Access-Control-Allow-Origin', '*');
+//   next();
+// });
+// app.use((req, res, next) => {
+//   console.log(`Incoming ${req.method} request to ${req.path}`);
+//   next();
+// });
 
-app.get('/product/:id', (req, res) => {
+app.get('/products/:id', (req, res) => {
+  if (req.params.id < 1 || req.params.id > 10000000) {
+    console.log('invalid product id')
+    res.status(404).send('Oops! Not a valid productId');
+  }
   getProduct(req.params.id, (err, results) => {
     if (err) {
       res.status(500).send(err);
-    } else if (!results.length) {
-      res.status(404).send('Oops! Product not found!');
+    // } else if (!results.length) {
+    //   res.status(404).send('Oops! Product not found!');
     } else {
       res.status(200).send(results);
     }

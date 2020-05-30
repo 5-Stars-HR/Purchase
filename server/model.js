@@ -1,5 +1,5 @@
-const { connection } = require('../db/index.js');
-const { client } = require('../SDC/archive/index.js');
+// const { connection } = require('../db/index.js');
+// const { client } = require('../SDC/archive/index.js');
 const { getProduct, getNearbyStores } = require('../SDC/index.js');
 
 const getProductData = (id, callback) => {

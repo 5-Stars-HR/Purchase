@@ -44,6 +44,7 @@ const TabList = (props) => {
 
   const handleSubmitQuery = (e) => {
     e.preventDefault();
+    console.log(productId);
     getStores(productId, query)
       .then(({ data }) => {
         setStores(data);

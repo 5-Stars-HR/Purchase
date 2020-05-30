@@ -41,7 +41,7 @@ const storeSchema = new mongoose.Schema({
   city: String,
   state: String,
   zip: Number,
-  // productAvailability: Object // an object or array with all the productIds that this store has in stock
+  productAvailability: Boolean
 });
 
 const Products = mongoose.model('Products', productSchema, 'products');
