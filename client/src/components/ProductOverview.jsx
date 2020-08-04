@@ -7,7 +7,7 @@ import TabList from './TabList';
 
 export const getProduct = async (id) => {
   try {
-    return await axios.get(`/product/${id}`);
+    return await axios.get(`/products/${id}`);
   } catch (error) {
     throw new Error(error);
   }
@@ -15,9 +15,9 @@ export const getProduct = async (id) => {
 
 const ProductOverview = () => {
   const [productData, setProductData] = useState({});
-  const randomProductId = Math.floor(Math.random() * (Math.floor(100) - Math.ceil(1) + 1)) + 1;
+  const randomProductId = Math.ceil(Math.random() * 10000000);
   const {
-    id,
+    productId,
     productName,
     price,
     reviewCount,
@@ -68,7 +68,7 @@ const ProductOverview = () => {
         productLimit={productLimit}
         productAvailabilityOnline={productAvailabilityOnline}
         themeName={themeName}
-        productId={id}
+        productId={productId}
       />
     </Container>
   );

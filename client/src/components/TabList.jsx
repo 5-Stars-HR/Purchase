@@ -35,7 +35,8 @@ const TabList = (props) => {
 
   const getStores = async (id, searchQuery) => {
     try {
-      return await axios.get(`/product/${id}/find-store?q=${searchQuery}`);
+      return await axios.get(`/products/${id}/stores/${searchQuery}`);
+      // return await axios.get(`/LEGACY/product/${id}/find-store?q=${searchQuery}`);
     } catch (error) {
       throw new Error(error);
     }
@@ -43,6 +44,7 @@ const TabList = (props) => {
 
   const handleSubmitQuery = (e) => {
     e.preventDefault();
+    console.log(productId);
     getStores(productId, query)
       .then(({ data }) => {
         setStores(data);

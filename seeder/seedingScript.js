@@ -18,14 +18,15 @@ const insertStores = (callback) => {
 const insertProducts = (callback) => {
   const productList = createRandomProducts(100);
   const query = 'INSERT INTO products (productName, price, reviewCount, rating, themeName, themeImageUrl, featured, chokingHazard, productLimit, productImageUrl, productAvailabilityOnline) VALUES ?';
-  connection.query(query, [productList], (err, result) => {
-    if (err) {
-      console.log(err);
-      callback(err);
-    }
-    console.log(`Number of records inserted: ${result.affectedRows}`);
-    insertStores(callback);
-  });
+  console.log(query, [productList]);
+  // connection.query(query, [productList], (err, result) => {
+  //   if (err) {
+  //     console.log(err);
+  //     callback(err);
+  //   }
+  //   console.log(`Number of records inserted: ${result.affectedRows}`);
+  //   insertStores(callback);
+  // });
 };
 
 const init = () => {

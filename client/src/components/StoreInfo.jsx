@@ -6,6 +6,7 @@ const StoreInfo = ({ store }) => {
   const {
     storeName, storeAddress, productAvailability, id,
   } = store;
+  console.log(store);
 
   return (
     <Container>
@@ -25,6 +26,14 @@ const StoreInfo = ({ store }) => {
     </Container>
   );
 };
+
+/*
+BRIAN potential distance cheat method ->
+user zip 12345 store zip 12355 = distance 10mi (last two digits straight math)
+UZ 12345 SZ 12545 = distance 100mi (mid digit different, subtract, divide by 2)
+UZ 12345 SZ 15345 = distance 300mi (2nd digit different, subtract, divide by 10)
+UZ 12345 SZ 52345 = distance 2000mi (first digit different, subtract, divide by 20)
+*/
 
 export default StoreInfo;
 

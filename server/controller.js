@@ -1,5 +1,10 @@
 /* eslint-disable no-console */
-const { getProductData, getStoreData } = require('./model.js');
+const { getProductData,
+  getStoreData,
+  postProductData,
+  putProductData,
+  deleteProductData,
+} = require('./model.js');
 
 const getProduct = (id, callback) => {
   getProductData(id, (err, results) => {
@@ -10,8 +15,8 @@ const getProduct = (id, callback) => {
   });
 };
 
-const getStores = (id, searchQuery, callback) => {
-  getStoreData(id, searchQuery, (err, results) => {
+const getStores = (id, zip, callback) => {
+  getStoreData(id, zip, (err, results) => {
     if (err) {
       callback(err);
     }
@@ -19,7 +24,32 @@ const getStores = (id, searchQuery, callback) => {
   });
 };
 
+const postProduct = (q, callback) => {
+  postProductData(q, (err, results) => {
+    if (err) {
+      callback(err);
+    }
+    callback(null, results);
+  })
+}
+
+const putProduct = (q, id, callback) => {
+  putProduct(q, id, (err, results) => {
+    if (err) {
+      callback(err);
+    }
+    callback(null, results);
+  })
+}
+
+const deleteProduct = (id, callback) => {
+  console.log('delete')
+}
+
 module.exports = {
   getProduct,
   getStores,
+  postProduct,
+  putProduct,
+  deleteProduct,
 };
